@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      lang="en">
+<head>
+    <!--/*/ <th:block th:include="fragments/head :: head"></th:block> /*/-->
+    <title>Users List</title>
+</head>
+
+<body>
+
+<header>
+    <!--/*/ <th:block th:include="fragments/header :: header('users-list')"></th:block> /*/-->
+</header>
+
+<main class="container">
+    <div class="card mb-3">
+
+        <h3 class="card-header">Users List</h3>
+
+        <div class="card card-body">
+            <table class="table table-hover text-left">
+
+                <thead class="table-info">
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Tasks owned</th>
+
+                </tr>
+                </thead>
+
+                <tbody>
+                <tr th:each="user:${users}">
+
+                    <!--Photo & name-->
+                    <td>
+                        <img th:src="${user.photo}" alt="user photo"
+                             class="embed-responsive embed-responsive-3by4 d-inline my-photo-miniature"/>
+                        <div th:text="${user.name}" class=" d-inline ml-1"></div>
+                    </td>
+
+                    <!--Email-->
+                    <td th:text="${user.email}"></td>
+
+                    <!--Tasks owned-->
+                    <td th:if="${user.getTasksOwned().size() gt 0}">
+                        <ol class="pl-3">
+                            <li th:each="t : ${user.getTasksOwned()}">
+                                <span th:text="${t.name}"></span>
+                            </li>
+                        </ol>
+                    </td>
+                    <td th:if="${user.getTasksOwned().size()==0}">0</td>
+
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</main>
+
+<footer class="footer">
+    <!--/*/ <th:block th:include="fragments/footer :: footer"></th:block> /*/-->
+</footer>
+
+</body>
+</html>

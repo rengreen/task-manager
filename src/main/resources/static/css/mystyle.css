@@ -15,3 +15,8 @@ main.container {
     background-color: white;
     text-align: center;
 }
+
+.my-photo-miniature {
+    height: 2.0rem;
+    width: 1.5rem
+}
