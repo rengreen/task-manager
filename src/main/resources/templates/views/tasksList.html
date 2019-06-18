@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns="http://www.thymeleaf.org"
+      lang="en">
+<head>
+    <!--/*/ <th:block th:include="fragments/head :: head"></th:block> /*/-->
+    <title>Tasks List</title>
+</head>
+
+<body>
+
+<header>
+    <!--/*/ <th:block th:include="fragments/header :: header('tasks-list')"></th:block> /*/-->
+</header>
+
+<main class="container">
+    <div class="card mb-3">
+
+        <h3 class="card-header">Tasks List</h3>
+
+        <div class="card card-body">
+            <table class="my-tab table table-hover text-center">
+
+                <thead class="table-info">
+                <tr>
+                    <th class="text-left">Task name</th>
+                    <th>Date</th>
+                    <th>Task owner</th>
+                    <th>Task creator</th>
+                    <th colspan="2">Actions</th>
+                </tr>
+                </thead>
+
+                <tbody>
+
+                <tr th:each="t : ${tasks}">
+                    <!--Task name-->
+                    <td class="text-left" th:text="${t.name}"></td>
+
+                    <!--Date-->
+                    <td th:text="${#temporals.format(t.date, 'dd-MM-yyyy')}"></td>
+
+                    <!--Task owner-->
+                    <td th:if="${t.owner!=null}">
+                        <div th:text="${t.owner.getName()}"></div>
+                    </td>
+
+                    <td class="text-center" th:unless="${t.owner!=null}">-</td>
+
+                    <!--Task creator-->
+                    <td th:text="${t.creator.getName()}"></td>
+
+                    <!--edit button-->
+                    <td>Edit</td>
+
+                    <!--delete button-->
+                    <td>Delete</td>
+
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</main>
+
+<footer class="footer">
+    <!--/*/ <th:block th:include="fragments/footer :: footer"></th:block> /*/-->
+</footer>
+
+</body>
+</html>
