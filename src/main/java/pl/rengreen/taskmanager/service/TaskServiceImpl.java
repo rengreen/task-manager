@@ -5,6 +5,8 @@ import org.springframework.stereotype.Service;
 import pl.rengreen.taskmanager.model.Task;
 import pl.rengreen.taskmanager.repository.TaskRepository;
 
+import java.util.List;
+
 @Service
 public class TaskServiceImpl implements TaskService {
     private TaskRepository taskRepository;
@@ -18,4 +20,10 @@ public class TaskServiceImpl implements TaskService {
     public void createTask(Task task) {
         taskRepository.save(task);
     }
+
+    @Override
+    public List<Task> findAll() {
+        return taskRepository.findAll();
+    }
+
 }
