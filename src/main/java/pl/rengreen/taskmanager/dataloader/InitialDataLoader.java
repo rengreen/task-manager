@@ -39,7 +39,7 @@ public class InitialDataLoader implements ApplicationListener<ContextRefreshedEv
                 "admin@mail.com",
                 "admin",
                 "112233",
-                "photo");
+                "images/user.png");
         userService.createUser(admin);
         userService.changeRoleToAdmin(admin);
 
@@ -47,7 +47,7 @@ public class InitialDataLoader implements ApplicationListener<ContextRefreshedEv
                 "ann@mail.com",
                 "Ann",
                 "112233",
-                "photo");
+                "images/user.png");
         userService.createUser(ann);
         userService.changeRoleToAdmin(ann);
 
@@ -55,7 +55,7 @@ public class InitialDataLoader implements ApplicationListener<ContextRefreshedEv
                 "mark@mail.com",
                 "Mark",
                 "112233",
-                "photo");
+                "images/user.png");
         userService.createUser(mark);
         userService.changeRoleToAdmin(mark);
 
