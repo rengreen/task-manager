@@ -1,5 +1,7 @@
 package pl.rengreen.taskmanager.dataloader;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
@@ -20,7 +22,7 @@ public class InitialDataLoader implements ApplicationListener<ContextRefreshedEv
     private UserService userService;
     private TaskService taskService;
     private RoleService roleService;
-
+    private final Logger logger = LoggerFactory.getLogger(InitialDataLoader.class);
     private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 
     @Autowired
@@ -36,6 +38,7 @@ public class InitialDataLoader implements ApplicationListener<ContextRefreshedEv
         //ROLES --------------------------------------------------------------------------------------------------------
         roleService.createRole(new Role("ADMIN"));
         roleService.createRole(new Role("USER"));
+        roleService.findAll().stream().map(role -> "saved role: " + role.getRole()).forEach(logger::info);
 
         //USERS --------------------------------------------------------------------------------------------------------
         //1
@@ -90,6 +93,11 @@ public class InitialDataLoader implements ApplicationListener<ContextRefreshedEv
                 "Tom",
                 "112233",
                 "images/tom.jpg"));
+
+        userService.findAll().stream()
+                .map(u -> "saved user: " + u.getName())
+                .forEach(logger::info);
+
 
         //TASKS --------------------------------------------------------------------------------------------------------
         //tasks from Web Design Checklist
@@ -271,6 +279,8 @@ public class InitialDataLoader implements ApplicationListener<ContextRefreshedEv
                 userService.getUserByEmail("admin@mail.com")
         ));
 
+        taskService.findAll().stream().map(t -> "saved task: '" + t.getName()
+                + "' for owner: " + getOwnerNameOrNoOwner(t)).forEach(logger::info);
     }
 
     private String getOwnerNameOrNoOwner(Task task) {
