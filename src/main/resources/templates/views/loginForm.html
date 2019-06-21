@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="eng"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!--/*/ <th:block th:include="fragments/head :: head"></th:block> /*/-->
+    <title>Login</title>
+</head>
+
+<body>
+
+<header>
+    <!--/*/ <th:block th:include="fragments/header :: header('login')"></th:block> /*/-->
+</header>
+
+<main class="container">
+    <div class="card mb-3">
+
+        <h3 class="card-header">Login to User Account</h3>
+
+        <div class="card card-body">
+            <div>
+
+                <div class="alert alert-danger" th:if="${param.error}">
+                    <h2>Invalid Email or Password</h2>
+                </div>
+                <form th:action="@{/login}" method="post">
+
+                    <div class="form-group">
+                        <label for="email" class="form-control-label">Email</label>
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control"
+                                   id="email" name="username"/>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password" class="control-label">Password</label>
+                        <div class="input-group mb-3">
+                            <input type="password" class="form-control password my-input-eye"
+                                   id="password" name="password"/>
+                        </div>
+                    </div>
+
+                    <input type="submit" value="Submit" class="btn btn-primary"/>
+                </form>
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer class="footer">
+    <!--/*/ <th:block th:include="fragments/footer :: footer"></th:block> /*/-->
+</footer>
+
+<!--show password when mouse is over eye icon-->
+<script src="js/main.js"></script>
+
+</body>
+</html>
