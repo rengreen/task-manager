@@ -55,6 +55,11 @@
                                 </div>
                                 <input type="password" class="form-control password"
                                        th:field="*{password}" id="password"/>
+                                <div class="input-group-append">
+                                <span class="input-group-text my-append-eye">
+                                    <i class="far fa-eye show-password"></i>
+                                </span>
+                                </div>
                             </div>
                             <div class="text text-danger"
                                  th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></div>
@@ -94,6 +99,9 @@
 <footer class="footer">
     <!--/*/ <th:block th:include="fragments/footer :: footer"></th:block> /*/-->
 </footer>
+
+<!--show password when mouse is over eye icon-->
+<script src="js/main.js"></script>
 
 </body>
 </html>
