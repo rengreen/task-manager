@@ -33,6 +33,11 @@
                         <div class="form-group">
                             <label for="email" class="form-control-label">Email</label>
                             <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <i class="fas fa-at"></i>
+                                    </span>
+                                </div>
                                 <input type="text" class="form-control"
                                        th:field="*{email}" id="email"/>
                             </div>
@@ -43,6 +48,11 @@
                         <div class="form-group">
                             <label for="password" class="form-control-label">Password</label>
                             <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <i class="fas fa-lock"></i>
+                            </span>
+                                </div>
                                 <input type="password" class="form-control password"
                                        th:field="*{password}" id="password"/>
                             </div>
@@ -53,6 +63,11 @@
                         <div class="form-group">
                             <label for="name" class="form-control-label">Name</label>
                             <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <i class="fas fa-user"></i>
+                                    </span>
+                                </div>
                                 <input type="text" class="form-control"
                                        th:field="*{name}" id="name"/>
                             </div>

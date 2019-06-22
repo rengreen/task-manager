@@ -22,10 +22,16 @@
             <form th:action="@{/task/create}" th:object="${task}" method="post">
                 <input type="hidden" th:field="*{creator}"/>
 
+                <!--name-->
                 <div class="form-group">
                     <label for="name" class="form-control-label">Task name</label>
                     <div class="input-group mb-3">
-                         <input type="text" class="form-control"
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <i class="fas fa-pen"></i>
+                            </span>
+                        </div>
+                        <input type="text" class="form-control"
                                th:field="*{name}" id="name"/>
                     </div>
                     <div class="text text-danger"
@@ -45,6 +51,11 @@
                 <div class="form-group">
                     <label for="date" class="form-control-label">Date</label>
                     <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <i class="far fa-calendar-alt"></i>
+                            </span>
+                        </div>
                         <input type="date" class="form-control"
                                th:attr="value=${#dates.format(#dates.createNow(), 'yyyy-MM-dd')},
                                     min=${#dates.format(#dates.createNow(), 'yyyy-MM-dd')}"
