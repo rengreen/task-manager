@@ -6,6 +6,7 @@ import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Entity
 public class User {
@@ -36,6 +37,18 @@ public class User {
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private List<Role> roles;
+
+    public List<Task> getTasksCompleted() {
+        return tasksOwned.stream()
+                .filter(Task::isCompleted)
+                .collect(Collectors.toList());
+    }
+
+    public List<Task> getTasksInProgress() {
+        return tasksOwned.stream()
+                .filter(task -> !task.isCompleted())
+                .collect(Collectors.toList());
+    }
 
     public User() {
     }

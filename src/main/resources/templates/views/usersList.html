@@ -25,7 +25,8 @@
                 <tr>
                     <th>Name</th>
                     <th>Email</th>
-                    <th>Tasks owned</th>
+                    <th>Tasks in progress</th>
+                    <th>Tasks completed</th>
 
                 </tr>
                 </thead>
@@ -43,15 +44,25 @@
                     <!--Email-->
                     <td th:text="${user.email}"></td>
 
-                    <!--Tasks owned-->
-                    <td th:if="${user.getTasksOwned().size() gt 0}">
+                    <!--Tasks in  progress-->
+                    <td th:if="${user.getTasksInProgress().size() gt 0}">
                         <ol class="pl-3">
-                            <li th:each="t : ${user.getTasksOwned()}">
+                            <li th:each="t : ${user.getTasksInProgress()}">
+                                <span th:text="${t.name}"></span>
+                                </li>
+                        </ol>
+                    </td>
+                    <td th:if="${user.getTasksInProgress().size()==0}">0</td>
+
+                    <!--Tasks completed-->
+                    <td th:if="${user.getTasksCompleted().size() gt 0}">
+                        <ol class="pl-3">
+                            <li th:each="t : ${user.getTasksCompleted()}">
                                 <span th:text="${t.name}"></span>
                             </li>
                         </ol>
                     </td>
-                    <td th:if="${user.getTasksOwned().size()==0}">0</td>
+                    <td th:if="${user.getTasksCompleted().size()==0}">0</td>
 
                 </tr>
                 </tbody>
