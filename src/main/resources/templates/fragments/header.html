@@ -28,7 +28,7 @@
                 <!--Assign tasks-->
                 <li th:class="${activeTab == 'assign-tasks'}? 'active nav-item mx-2' : 'nav-item mx-2'"
                     sec:authorize="hasRole('ROLE_ADMIN')">
-                    <a class="nav-link" href="">Assign Tasks</a>
+                    <a class="nav-link" href="/assign">Assign Tasks</a>
                 </li>
 
                 <!--Create New Task-->

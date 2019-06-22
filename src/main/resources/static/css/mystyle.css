@@ -21,6 +21,10 @@ main.container {
     width: 1.5rem
 }
 
+.my-user-card-photo {
+    max-width: 50%
+}
+
 .my-append-eye {
     background-color: white;
     border-left: 0;
