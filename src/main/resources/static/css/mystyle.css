@@ -29,3 +29,22 @@ main.container {
 .my-password-input {
     border-right: 0;
 }
+
+.my-link {
+    color: black;
+}
+
+.my-link,
+.my-link:visited,
+.my-link:hover,
+.my-link:active {
+    text-decoration: none;
+}
+
+.my-link:hover {
+    color: black;
+}
+
+.my-check {
+    font-size: 1.5rem;
+}

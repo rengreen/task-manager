@@ -24,6 +24,7 @@
                 <tr>
                     <th class="text-left">Task name</th>
                     <th>Date</th>
+                    <th>Completed</th>
                     <th>Task owner</th>
                     <th>Task creator</th>
                     <th colspan="2">Actions</th>
@@ -38,6 +39,14 @@
 
                     <!--Date-->
                     <td th:text="${#temporals.format(t.date, 'dd-MM-yyyy')}"></td>
+
+                    <!--Completed / In progress-->
+                    <td>
+                        <a th:href="${t.completed} ? ${'/task/markUndone/' + t.id} : ${'/task/markDone/' + t.id}"
+                           th:class="${t.owner==null} ? 'disabled nav-link my-link' : 'nav-link my-link'"
+                        ><i th:class="${t.completed} ? 'far fa-check-square my-check':'far fa-square my-check'"></i>
+                        </a>
+                    </td>
 
                     <!--Task owner-->
                     <td th:if="${t.owner!=null}">
