@@ -20,3 +20,12 @@ main.container {
     height: 2.0rem;
     width: 1.5rem
 }
+
+.my-append-eye {
+    background-color: white;
+    border-left: 0;
+}
+
+.my-password-input {
+    border-right: 0;
+}
