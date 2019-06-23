@@ -59,7 +59,9 @@
                     <td th:text="${t.creator.getName()}"></td>
 
                     <!--edit button-->
-                    <td>Edit</td>
+                    <td>
+                        <a th:href="${'/task/edit/' + t.id}" class="btn btn-outline-success btn-sm">Edit</a>
+                    </td>
 
                     <!--delete button-->
                     <td>Delete</td>

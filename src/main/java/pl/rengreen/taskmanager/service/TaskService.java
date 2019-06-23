@@ -9,6 +9,8 @@ public interface TaskService {
 
     void createTask(Task task);
 
+    void updateTask(Long id, Task task);
+
     List<Task> findAll();
 
     List<Task> findByOwnerOrderByDateDesc(User user);

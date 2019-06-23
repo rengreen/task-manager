@@ -24,6 +24,15 @@ public class TaskServiceImpl implements TaskService {
     }
 
     @Override
+    public void updateTask(Long id, Task updatedTask) {
+        Task task = taskRepository.getOne(id);
+        task.setName(updatedTask.getName());
+        task.setDescription(updatedTask.getDescription());
+        task.setDate(updatedTask.getDate());
+        taskRepository.save(task);
+    }
+
+    @Override
     public List<Task> findAll() {
         return taskRepository.findAll();
     }

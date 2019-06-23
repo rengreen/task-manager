@@ -53,6 +53,21 @@ public class TaskController {
         return "redirect:/tasks";
     }
 
+    @GetMapping("task/edit/{id}")
+    public String showFilledTaskForm(@PathVariable Long id, Model model) {
+        model.addAttribute("task", taskService.getTaskById(id));
+        return "views/filledTaskForm";
+    }
+
+    @PostMapping("task/edit/{id}")
+    public String updateTask(@Valid Task task, BindingResult bindingResult, @PathVariable Long id, Model model) {
+        if (bindingResult.hasErrors()) {
+            return "views/filledTaskForm";
+        }
+        taskService.updateTask(id, task);
+        return "redirect:/tasks";
+    }
+
     @GetMapping("task/markDone/{id}")
     public String setTaskCompleted(@PathVariable Long id) {
         taskService.setTaskCompleted(id);
