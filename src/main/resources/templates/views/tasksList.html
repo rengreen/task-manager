@@ -64,7 +64,38 @@
                     </td>
 
                     <!--delete button-->
-                    <td>Delete</td>
+                    <td>
+                        <a data-toggle="modal" data-target="#modal-delete"
+                           th:attr="data-target='#modal-delete'+${t.id}"
+                           th:href="${'/task/delete/' + t.id}"
+                           class="btn btn-outline-danger btn-sm">Delete
+                        </a>
+                    </td>
+
+                    <!--modal for delete confirmation-->
+                    <div class="modal" th:id="modal-delete+${t.id }">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h3 class="modal-title text-danger">Delete Confirmation</h3>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <p th:text="${'Are you sure you want to delete task: &quot '+t.name+'&quot?'}"></p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">
+                                        Cancel
+                                    </button>
+                                    <a th:href="${'/task/delete/' + t.id}">
+                                        <span class="btn btn-danger">Delete</span></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--end of modal for delete confirmation-->
 
                 </tr>
                 </tbody>

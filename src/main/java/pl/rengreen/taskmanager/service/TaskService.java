@@ -11,6 +11,8 @@ public interface TaskService {
 
     void updateTask(Long id, Task task);
 
+    void deleteTask(Long id);
+
     List<Task> findAll();
 
     List<Task> findByOwnerOrderByDateDesc(User user);
