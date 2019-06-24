@@ -7,3 +7,14 @@ $(".show-password").hover(
         $("#password").attr("type", "password");
     }
 );
+
+//remain scroll position after redirect
+$(window).scroll(function () {
+    sessionStorage.scrollTop = $(this).scrollTop();
+});
+
+$(document).ready(function () {
+    if (sessionStorage.scrollTop !== "undefined") {
+        $(window).scrollTop(sessionStorage.scrollTop);
+    }
+});
