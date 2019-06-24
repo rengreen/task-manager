@@ -25,7 +25,7 @@ public class ProfileController {
 
     @GetMapping("/profile")
     public String showProfilePage(Model model, Principal principal) {
-        String email=principal.getName();
+        String email = principal.getName();
         User user = userService.getUserByEmail(email);
         model.addAttribute("user", user);
         model.addAttribute("tasksOwned", taskService.findByOwnerOrderByDateDesc(user));

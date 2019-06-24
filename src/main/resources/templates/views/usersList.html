@@ -50,7 +50,7 @@
                             <li th:each="t : ${user.getTasksInProgress()}">
                                 <span th:text="${t.name}"></span>
                                 <!--/*/ <th:block th:include="fragments/showDaysLeftUntilDeadline :: daysLeft(${t})"></th:block> /*/-->
-                                </li>
+                            </li>
                         </ol>
                     </td>
                     <td th:if="${user.getTasksInProgress().size()==0}">0</td>

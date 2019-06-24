@@ -42,7 +42,7 @@ public class InitialDataLoader implements ApplicationListener<ContextRefreshedEv
 
         //USERS --------------------------------------------------------------------------------------------------------
         //1
-        User admin=new User(
+        User admin = new User(
                 "admin@mail.com",
                 "admin",
                 "112233",
@@ -51,7 +51,7 @@ public class InitialDataLoader implements ApplicationListener<ContextRefreshedEv
         userService.changeRoleToAdmin(admin);
 
         //2
-        User manager=new User(
+        User manager = new User(
                 "manager@mail.com",
                 "manager",
                 "112233",
