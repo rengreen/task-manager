@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import pl.rengreen.taskmanager.model.User;
 import pl.rengreen.taskmanager.service.TaskService;
 import pl.rengreen.taskmanager.service.UserService;
@@ -29,6 +30,18 @@ public class ProfileController {
         model.addAttribute("user", user);
         model.addAttribute("tasksOwned", taskService.findByOwnerOrderByDateDesc(user));
         return "views/profile";
+    }
+
+    @GetMapping("/profile/markDone/{taskId}")
+    public String setTaskCompleted(@PathVariable Long taskId) {
+        taskService.setTaskCompleted(taskId);
+        return "redirect:/profile";
+    }
+
+    @GetMapping("/profile/markUndone/{taskId}")
+    public String setTaskNotCompleted(@PathVariable Long taskId) {
+        taskService.setTaskNotCompleted(taskId);
+        return "redirect:/profile";
     }
 
 }

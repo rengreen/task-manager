@@ -57,6 +57,14 @@
                         <!--/*/ <th:block th:include="fragments/showDaysLeftUntilDeadline :: daysLeft(${t})"></th:block> /*/-->
                     </td>
 
+                    <!--Completed/In progress-->
+                    <td>
+                        <a th:href="${t.completed} ? ${'/profile/markUndone/' + t.id} : ${'/profile/markDone/' + t.id}"
+                           th:class="${t.owner==null} ? 'disabled nav-link my-link' : 'nav-link my-link'"
+                        ><i th:class="${t.completed} ? 'far fa-check-square my-check':'far fa-square my-check'"></i>
+                        </a>
+                    </td>
+
                 </tr>
 
                 <tr th:if="${user.tasksOwned.size()==0}">
