@@ -8,6 +8,7 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.time.*;
+import java.time.temporal.ChronoUnit;
 
 @Entity
 public class Task {
@@ -31,6 +32,10 @@ public class Task {
     @ManyToOne
     @JoinColumn(name = "OWNER_ID")
     private User owner;
+
+    public long daysLeftUntilDeadline(LocalDate date) {
+        return ChronoUnit.DAYS.between(LocalDate.now(), date);
+    }
 
     public Task() {
     }

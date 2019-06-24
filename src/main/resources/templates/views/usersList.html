@@ -49,6 +49,7 @@
                         <ol class="pl-3">
                             <li th:each="t : ${user.getTasksInProgress()}">
                                 <span th:text="${t.name}"></span>
+                                <!--/*/ <th:block th:include="fragments/showDaysLeftUntilDeadline :: daysLeft(${t})"></th:block> /*/-->
                                 </li>
                         </ol>
                     </td>

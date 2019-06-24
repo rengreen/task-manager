@@ -24,6 +24,7 @@
                 <tr>
                     <th class="text-left">Task name</th>
                     <th>Date</th>
+                    <th>Days left</th>
                     <th>Completed</th>
                     <th>Task owner</th>
                     <th>Task creator</th>
@@ -39,6 +40,11 @@
 
                     <!--Date-->
                     <td th:text="${#temporals.format(t.date, 'dd-MM-yyyy')}"></td>
+
+                    <!--Days left-->
+                    <td class="text-center col-1">
+                        <!--/*/ <th:block th:include="fragments/showDaysLeftUntilDeadline :: daysLeft(${t})"></th:block> /*/-->
+                    </td>
 
                     <!--Completed / In progress-->
                     <td>
