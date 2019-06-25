@@ -35,8 +35,48 @@
                 <tbody>
 
                 <tr th:each="t : ${tasks}">
-                    <!--Task name-->
-                    <td class="text-left" th:text="${t.name}"></td>
+                    <!--Task name and description link-->
+                    <td class="text-left">
+                        <span>
+                            <a data-toggle="modal" data-target="#modal-details"
+                               th:attr="data-target='#modal-details'+${t.id}"
+                               th:href="${'/task/' + t.id}"
+                               class="nav-link my-link px-1 d-inline"
+                               th:text="${t.name}+' '"
+                            ></a>
+                            <a data-toggle="modal" data-target="#modal-details"
+                               th:attr="data-target='#modal-details'+${t.id}"
+                               th:href="${'/task/' + t.id}"
+                               class="btn-link d-inline"
+                            >
+                            <!--<i class="fas fa-ellipsis-h my-link"></i>-->
+                            <small class="badge badge-light">more</small>
+                            </a>
+
+                        </span>
+                    </td>
+
+                    <!--modal with task details-->
+                    <div class="modal" th:id="modal-details+${t.id}">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h4 th:text="${t.name}" class="modal-title text-info"></h4>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <p th:text="${'Description: '+t.description}"></p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Close
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--end of modal with task details-->
 
                     <!--Date-->
                     <td th:text="${#temporals.format(t.date, 'dd-MM-yyyy')}"></td>
