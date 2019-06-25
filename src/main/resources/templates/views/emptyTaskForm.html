@@ -21,6 +21,7 @@
         <div class="card card-body">
             <form th:action="@{/task/create}" th:object="${task}" method="post">
                 <input type="hidden" th:field="*{creator}"/>
+                <input type="hidden" th:field="*{owner}"/>
 
                 <!--name-->
                 <div class="form-group">

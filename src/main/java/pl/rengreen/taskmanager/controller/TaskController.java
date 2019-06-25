@@ -42,11 +42,15 @@ public class TaskController {
     }
 
     @GetMapping("task/create")
-    public String showTaskForm(Model model) {
+    public String showEmptyTaskFormForUser(Model model, Principal principal, SecurityContextHolderAwareRequestWrapper request) {
+        String email=principal.getName();
+        User user = userService.getUserByEmail(email);
 
-        User user = userService.getUserByEmail("admin@mail.com");
         Task task = new Task();
         task.setCreator(user);
+        if (request.isUserInRole("ROLE_USER")) {
+            task.setOwner(user);
+        }
         model.addAttribute("task", task);
         return "views/emptyTaskForm";
     }
