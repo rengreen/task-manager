@@ -41,6 +41,7 @@
                     <th>Description</th>
                     <th>Date</th>
                     <th>Days left</th>
+                    <th>Completed</th>
 
                 </tr>
                 </thead>
@@ -68,7 +69,7 @@
                 </tr>
 
                 <tr th:if="${user.tasksOwned.size()==0}">
-                    <td colspan="3" th:text="${'There are no tasks assigned to '+ user.name}"></td>
+                    <td colspan="5" th:text="${'There are no tasks assigned to '+ user.name}"></td>
                 </tr>
                 </tbody>
             </table>
