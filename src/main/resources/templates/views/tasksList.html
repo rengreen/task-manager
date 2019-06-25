@@ -65,17 +65,31 @@
                     <td th:text="${t.creator.getName()}"></td>
 
                     <!--edit button-->
-                    <td>
+                    <td th:if="${isAdmin or t.creator.equals(signedUser)}">
                         <a th:href="${'/task/edit/' + t.id}" class="btn btn-outline-success btn-sm">Edit</a>
                     </td>
 
+                    <td th:unless="${isAdmin or t.creator.equals(signedUser)}">
+                        <span data-toggle="tooltip" data-placement="top" data-html="true"
+                              title="Only task creator or admin can edit this task">
+                        <a th:href="${'/task/edit/' + t.id}" class="btn btn-outline-secondary btn-sm disabled">Edit</a>
+                        </span>
+                    </td>
+
                     <!--delete button-->
-                    <td>
+                    <td th:if="${isAdmin or t.creator.equals(signedUser)}">
                         <a data-toggle="modal" data-target="#modal-delete"
                            th:attr="data-target='#modal-delete'+${t.id}"
                            th:href="${'/task/delete/' + t.id}"
                            class="btn btn-outline-danger btn-sm">Delete
                         </a>
+                    </td>
+
+                    <td th:unless="${isAdmin or t.creator.equals(signedUser)}">
+                        <span data-toggle="tooltip" data-placement="top" data-html="true"
+                              title="Only task creator or admin can delete this task">
+                        <a href="" class="btn btn-outline-secondary btn-sm disabled">Delete</a>
+                    </span>
                     </td>
 
                     <!--modal for delete confirmation-->
