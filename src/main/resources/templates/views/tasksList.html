@@ -30,15 +30,7 @@
                     <th>Task creator</th>
                     <th colspan="2">Actions</th>
                 </tr>
-<!--                <tr class="table-white">
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th colspan="2"></th>
-                </tr>-->
+
                 </thead>
 
                 <tbody>
@@ -58,7 +50,6 @@
                                th:href="${'/task/' + t.id}"
                                class="btn-link d-inline"
                             >
-                            <!--<i class="fas fa-ellipsis-h my-link"></i>-->
                             <small class="badge badge-light">more</small>
                             </a>
 
@@ -88,10 +79,13 @@
                     <!--end of modal with task details-->
 
                     <!--Date-->
-                    <td th:text="${#temporals.format(t.date, 'dd-MM-yyyy')}"></td>
+                    <td th:text="${#temporals.format(t.date, 'dd-MM-yyyy')}"
+                        th:data-order="${t.date}"
+                    ></td>
 
                     <!--Days left-->
-                    <td class="text-center col-1">
+                    <td class="text-center col-1"
+                        th:data-order="${t.date}">
                         <!--/*/ <th:block th:include="fragments/showDaysLeftUntilDeadline :: daysLeft(${t})"></th:block> /*/-->
                     </td>
 

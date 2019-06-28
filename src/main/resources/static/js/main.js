@@ -26,7 +26,7 @@ $(document).ready(function () {
         columnDefs: [
             {
                 ordering: false,
-            targets: [6,7]
+                targets: [6,7]
             }
         ]
     });
