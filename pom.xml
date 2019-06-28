@@ -78,6 +78,11 @@
             <artifactId>font-awesome</artifactId>
             <version>5.7.1</version>
         </dependency>
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>datatables</artifactId>
+            <version>1.9.4-2</version>
+        </dependency>
     </dependencies>
 
     <build>

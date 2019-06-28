@@ -18,3 +18,17 @@ $(document).ready(function () {
         $(window).scrollTop(sessionStorage.scrollTop);
     }
 });
+
+//DataTable plug-in
+$(document).ready(function () {
+    $('#sortableTable').DataTable(
+        {
+        columnDefs: [
+            {
+                ordering: false,
+            targets: [6,7]
+            }
+        ]
+    });
+    $('.dataTables_length').addClass('bs-select');
+});

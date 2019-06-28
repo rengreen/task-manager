@@ -18,18 +18,27 @@
         <h3 class="card-header">Tasks List</h3>
 
         <div class="card card-body">
-            <table class="my-tab table table-hover text-center">
+            <table id="sortableTable" class="my-tab table table-hover text-center">
 
-                <thead class="table-info">
+                <thead class="table-primary">
                 <tr>
                     <th class="text-left">Task name</th>
                     <th>Date</th>
-                    <th>Days left</th>
+                    <th>Days</th>
                     <th>Completed</th>
                     <th>Task owner</th>
                     <th>Task creator</th>
                     <th colspan="2">Actions</th>
                 </tr>
+<!--                <tr class="table-white">
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th colspan="2"></th>
+                </tr>-->
                 </thead>
 
                 <tbody>
@@ -87,7 +96,7 @@
                     </td>
 
                     <!--Completed / In progress-->
-                    <td>
+                    <td th:data-order="${t.completed} ? 1 : 0">
                         <a th:href="${t.completed} ? ${'/task/markUndone/' + t.id} : ${'/task/markDone/' + t.id}"
                            th:class="${t.owner==null} ? 'disabled nav-link my-link' : 'nav-link my-link'"
                         ><i th:class="${t.completed} ? 'far fa-check-square my-check':'far fa-square my-check'"></i>
@@ -168,6 +177,7 @@
     <!--/*/ <th:block th:include="fragments/footer :: footer"></th:block> /*/-->
 </footer>
 
+<!--DataTable plug-in-->
 <!--remain scroll position after redirect-->
 <script src="js/main.js"></script>
 
