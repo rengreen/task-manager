@@ -15,7 +15,14 @@
 <main class="container">
     <div class="card mb-3">
 
-        <h3 class="card-header">Tasks List</h3>
+        <h3 class="card-header">Tasks List
+            <span th:unless="${onlyInProgress}">
+                <a href="/tasks/inProgress" class="btn btn-outline-info btn-lg float-right">Hide Completed Tasks</a>
+            </span>
+            <span th:if="${onlyInProgress}">
+                <a href="/tasks" class="btn btn-outline-info btn-lg float-right">Show Completed Tasks</a>
+            </span>
+        </h3>
 
         <div class="card card-body">
             <table id="sortableTable" class="my-tab table table-hover text-center">
@@ -35,7 +42,8 @@
 
                 <tbody>
 
-                <tr th:each="t : ${tasks}">
+                <tr th:each="t : ${tasks}" th:if="${!onlyInProgress or !t.completed}">
+
                     <!--Task name and description link-->
                     <td class="text-left">
                         <span>
