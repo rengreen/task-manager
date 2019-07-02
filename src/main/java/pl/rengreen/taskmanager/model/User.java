@@ -52,6 +52,11 @@ public class User {
                 .filter(task -> !task.isCompleted())
                 .collect(Collectors.toList());
     }
+    
+    public boolean isAdmin(){
+        String roleName="ADMIN";
+        return roles.stream().map(Role::getRole).anyMatch(roleName::equals);
+    }
 
     public User() {
     }
