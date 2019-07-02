@@ -1,5 +1,6 @@
 package pl.rengreen.taskmanager.model;
 
+import org.hibernate.annotations.Where;
 import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
@@ -9,6 +10,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Entity
+@Where(clause = "DELETED = 0")
 public class User {
 
     @Id
@@ -26,7 +28,8 @@ public class User {
     private String password;
     @Column(columnDefinition = "VARCHAR(255) DEFAULT 'images/user.png'")
     private String photo;
-    private boolean isActive;
+    @Column(name = "DELETED")
+    private Integer deleted;
     @OneToMany(mappedBy = "creator", cascade = CascadeType.ALL)
     private List<Task> tasksCreated;
     @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL)
@@ -67,7 +70,7 @@ public class User {
                 @NotEmpty String name,
                 @NotEmpty @Length(min = 5) String password,
                 String photo,
-                int active,
+                int deleted,
                 List<Task> tasksCreated,
                 List<Task> tasksOwned,
                 List<Role> roles) {
@@ -75,7 +78,7 @@ public class User {
         this.name = name;
         this.password = password;
         this.photo = photo;
-        this.isActive = isActive;
+        this.deleted = deleted;
         this.tasksCreated = tasksCreated;
         this.tasksOwned = tasksOwned;
         this.roles = roles;
@@ -121,12 +124,12 @@ public class User {
         this.photo = photo;
     }
 
-    public boolean isActive() {
-        return isActive;
+    public Integer getDeleted() {
+        return deleted;
     }
 
-    public void setActive(boolean active) {
-        isActive = active;
+    public void setDeleted(Integer deleted) {
+        this.deleted = deleted;
     }
 
     public List<Task> getTasksCreated() {
