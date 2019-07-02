@@ -23,12 +23,13 @@ $(document).ready(function () {
 $(document).ready(function () {
     $('#sortableTable').DataTable(
         {
-        columnDefs: [
-            {
-                ordering: false,
-                targets: [6,7]
-            }
-        ]
-    });
+            columnDefs: [
+                {
+                    ordering: false,
+                    targets: [6, 7]
+                }
+            ],
+            pageLength: 25
+        });
     $('.dataTables_length').addClass('bs-select');
 });
