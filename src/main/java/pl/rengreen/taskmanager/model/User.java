@@ -26,7 +26,7 @@ public class User {
     private String password;
     @Column(columnDefinition = "VARCHAR(255) DEFAULT 'images/user.png'")
     private String photo;
-    private int active;
+    private boolean isActive;
     @OneToMany(mappedBy = "creator", cascade = CascadeType.ALL)
     private List<Task> tasksCreated;
     @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL)
@@ -75,7 +75,7 @@ public class User {
         this.name = name;
         this.password = password;
         this.photo = photo;
-        this.active = active;
+        this.isActive = isActive;
         this.tasksCreated = tasksCreated;
         this.tasksOwned = tasksOwned;
         this.roles = roles;
@@ -121,12 +121,12 @@ public class User {
         this.photo = photo;
     }
 
-    public int getActive() {
-        return active;
+    public boolean isActive() {
+        return isActive;
     }
 
-    public void setActive(int active) {
-        this.active = active;
+    public void setActive(boolean active) {
+        isActive = active;
     }
 
     public List<Task> getTasksCreated() {
