@@ -63,7 +63,7 @@ public class InitialDataLoader implements ApplicationListener<ContextRefreshedEv
         //2
         User manager = new User(
                 "manager@mail.com",
-                "manager",
+                "Manager",
                 "112233",
                 "images/admin.png");
         userService.createUser(manager);
@@ -161,7 +161,7 @@ public class InitialDataLoader implements ApplicationListener<ContextRefreshedEv
                 "Get quotation for hosting and domain, particularly if specialized hosting is involved such as VPS hosting, cloud hosting, or special hosting or environment requirements.",
                 today.minusDays(5),
                 false,
-                userService.getUserByEmail("admin@mail.com"),
+                userService.getUserByEmail("manager@mail.com"),
                 userService.getUserByEmail("kate@mail.com")
         ));
 
@@ -171,7 +171,7 @@ public class InitialDataLoader implements ApplicationListener<ContextRefreshedEv
                 "Quality assure each piece of content you have outsourced or bought – and ask for changes where necessary. Populate the website content with the various content items you have agreed with the client.",
                 today.minusDays(2),
                 false,
-                userService.getUserByEmail("admin@mail.com"),
+                userService.getUserByEmail("manager@mail.com"),
                 userService.getUserByEmail("mark@mail.com")
         ));
 
@@ -181,7 +181,7 @@ public class InitialDataLoader implements ApplicationListener<ContextRefreshedEv
                 "Define a Contact Us page with correct client details and a map. Populate links and icongraphy with links to relevant social media details. Create a link to your website in the footer (make sure it has been agreed with the client to do so).",
                 today.minusDays(1),
                 false,
-                userService.getUserByEmail("admin@mail.com"),
+                userService.getUserByEmail("manager@mail.com"),
                 userService.getUserByEmail("mark@mail.com")
         ));
 
@@ -191,7 +191,7 @@ public class InitialDataLoader implements ApplicationListener<ContextRefreshedEv
                 "Make sure web copywriting has been proofread and ran through a spelling and grammar checker to check for correctness. Use online tools such as Reverso, or Spellcheckplus.com. Check that generic content, such as lorem ipsum, has been properly removed and replaced.",
                 today,
                 false,
-                userService.getUserByEmail("admin@mail.com"),
+                userService.getUserByEmail("manager@mail.com"),
                 userService.getUserByEmail("ann@mail.com")
         ));
 
@@ -201,7 +201,7 @@ public class InitialDataLoader implements ApplicationListener<ContextRefreshedEv
                 "See that all images are in the correct places, smushed, formatted, width and height specified and working on all devices. Confirm that videos and audio files are in the correct places, formatted and working on all devices.",
                 today.plusDays(1),
                 false,
-                userService.getUserByEmail("admin@mail.com"),
+                userService.getUserByEmail("manager@mail.com"),
                 userService.getUserByEmail("ann@mail.com")
         ));
 
@@ -211,7 +211,7 @@ public class InitialDataLoader implements ApplicationListener<ContextRefreshedEv
                 "Test all linked content, such as case studies, ebooks, and whitepapers, and verify that they are correctly linked. Test to see that all internal links across web pages are working properly. Ensure that company logo is linked to the homepage.",
                 today.plusDays(2),
                 false,
-                userService.getUserByEmail("admin@mail.com"),
+                userService.getUserByEmail("manager@mail.com"),
                 userService.getUserByEmail("kate@mail.com")
         ));
 
@@ -251,8 +251,8 @@ public class InitialDataLoader implements ApplicationListener<ContextRefreshedEv
                 "Make sure that viewport meta tag is used. Check that  website is mobile-friendly with at least a MobileOk score of 75. Check if Google sees your page as Mobile-Friendly. Make sure that correct input types for email, phone and URL input form fields are used to ensure these are rendered correctly on mobile phones.",
                 today.plusDays(6),
                 false,
-                userService.getUserByEmail("admin@mail.com"),
-                userService.getUserByEmail("admin@mail.com")
+                userService.getUserByEmail("manager@mail.com"),
+                userService.getUserByEmail("manager@mail.com")
         ));
 
         //15
@@ -261,7 +261,7 @@ public class InitialDataLoader implements ApplicationListener<ContextRefreshedEv
                 "Check how the site looks on emulators such as ipadpeek, screenfly, mobilephonesimulator. Test the site using real devices you have accessible to you or use opendevicelab.com.",
                 today.plusDays(8),
                 false,
-                userService.getUserByEmail("admin@mail.com")
+                userService.getUserByEmail("manager@mail.com")
         ));
 
         //16
@@ -270,7 +270,7 @@ public class InitialDataLoader implements ApplicationListener<ContextRefreshedEv
                 "Check that all pages have unique page titles (with a recommended length of fewer than 70 characters, including any keywords). Check that all pages have unique meta descriptions (with a recommended length of fewer than 156 characters, including keywords). Verify that pages have your chosen keywords included without any keyword stuffing (do not over-emphasize particular keywords).",
                 today.plusDays(10),
                 false,
-                userService.getUserByEmail("admin@mail.com")
+                userService.getUserByEmail("manager@mail.com")
         ));
 
         //17
@@ -279,7 +279,7 @@ public class InitialDataLoader implements ApplicationListener<ContextRefreshedEv
                 "See that all page URLs consistently reflect site information architecture. If you have had another older website, make sure you have 301 redirects in place for all old URLs (redirecting old pages to new ones).",
                 today.plusDays(12),
                 false,
-                userService.getUserByEmail("admin@mail.com")
+                userService.getUserByEmail("manager@mail.com")
         ));
 
         //18
@@ -288,7 +288,7 @@ public class InitialDataLoader implements ApplicationListener<ContextRefreshedEv
                 "Minify javascript and CSS files. Optimize the size of images and replace the existing images with the optimized images. Specify image dimensions for each image. Enable gzip compression on your hosting server.",
                 today.plusDays(14),
                 false,
-                userService.getUserByEmail("admin@mail.com")
+                userService.getUserByEmail("manager@mail.com")
         ));
 
         //19
@@ -297,7 +297,7 @@ public class InitialDataLoader implements ApplicationListener<ContextRefreshedEv
                 "Create cover images for Social Media such as Facebook, Twitter, LinkedIn company page, Pinterest, Instagram or others as necessary. Register all social media properties and get them set up with profile images, cover pages, links back to the website.",
                 today.plusDays(16),
                 false,
-                userService.getUserByEmail("admin@mail.com")
+                userService.getUserByEmail("manager@mail.com")
         ));
 
         //20
@@ -306,7 +306,7 @@ public class InitialDataLoader implements ApplicationListener<ContextRefreshedEv
                 "Send the finished site to the client and get feedback. Fix and change any requests by client. Give access to client to all accounts created on their behalf. Send updates to client and wait for client sign-off.",
                 today.plusDays(18),
                 false,
-                userService.getUserByEmail("admin@mail.com")
+                userService.getUserByEmail("manager@mail.com")
         ));
 
         taskService.findAll().stream().map(t -> "saved task: '" + t.getName()
