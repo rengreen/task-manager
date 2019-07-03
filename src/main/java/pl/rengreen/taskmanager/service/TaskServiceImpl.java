@@ -65,7 +65,7 @@ public class TaskServiceImpl implements TaskService {
     public List<Task> findFreeTasks() {
         return taskRepository.findAll()
                 .stream()
-                .filter(task -> task.getOwner() == null)
+                .filter(task -> task.getOwner() == null && !task.isCompleted())
                 .collect(Collectors.toList());
 
     }

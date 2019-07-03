@@ -42,8 +42,10 @@
 
                 <tbody>
 
-                <tr th:each="t : ${tasks}" th:if="${!onlyInProgress or !t.completed}">
-
+                <tr th:each="t : ${tasks}"
+                    th:if="${!onlyInProgress or !t.completed}"
+                th:with="isThisOneSigned=${t.owner!=null ? t.owner.equals(signedUser) : false}"
+                >
                     <!--Task name and description link-->
                     <td class="text-left">
                         <span>
@@ -113,22 +115,22 @@
                     <td class="text-center" th:unless="${t.owner!=null}">-</td>
 
                     <!--Task creator-->
-                    <td th:text="${t.creator.getName()}"></td>
+                    <td th:text="${t.creatorName}"></td>
 
                     <!--edit button-->
-                    <td th:if="${isAdminSigned or t.creator.equals(signedUser)}">
+                    <td th:if="${isAdminSigned or isThisOneSigned}">
                         <a th:href="${'/task/edit/' + t.id}" class="btn btn-outline-success btn-sm">Edit</a>
                     </td>
 
-                    <td th:unless="${isAdminSigned or t.creator.equals(signedUser)}">
+                    <td th:unless="${isAdminSigned or isThisOneSigned}">
                         <span data-toggle="tooltip" data-placement="top" data-html="true"
-                              title="Only task creator or admin can edit this task">
+                              title="Only task owner or admin can edit this task">
                         <a th:href="${'/task/edit/' + t.id}" class="btn btn-outline-secondary btn-sm disabled">Edit</a>
                         </span>
                     </td>
 
                     <!--delete button-->
-                    <td th:if="${isAdminSigned or t.creator.equals(signedUser)}">
+                    <td th:if="${isAdminSigned or isThisOneSigned}">
                         <a data-toggle="modal" data-target="#modal-delete"
                            th:attr="data-target='#modal-delete'+${t.id}"
                            th:href="${'/task/delete/' + t.id}"
@@ -136,9 +138,9 @@
                         </a>
                     </td>
 
-                    <td th:unless="${isAdminSigned or t.creator.equals(signedUser)}">
+                    <td th:unless="${isAdminSigned or isThisOneSigned}">
                         <span data-toggle="tooltip" data-placement="top" data-html="true"
-                              title="Only task creator or admin can delete this task">
+                              title="Only task owner or admin can delete this task">
                         <a href="" class="btn btn-outline-secondary btn-sm disabled">Delete</a>
                     </span>
                     </td>

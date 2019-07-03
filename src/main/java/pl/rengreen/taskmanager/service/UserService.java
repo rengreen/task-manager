@@ -17,5 +17,5 @@ public interface UserService {
 
     User getUserById(Long userId);
 
-    void softDelete(Long id);
+    void deleteUser(Long id);
 }

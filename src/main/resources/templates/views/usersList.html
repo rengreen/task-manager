@@ -28,8 +28,6 @@
                     <th>Tasks in progress</th>
                     <th>Tasks completed</th>
                     <th th:if="${isAdminSigned}">Action</th>
-
-
                 </tr>
                 </thead>
 
@@ -68,14 +66,14 @@
                     <td th:if="${user.getTasksCompleted().size()==0}">0</td>
 
                     <!--Delete button-->
-                    <td th:unless="${user.isAdmin()}">
+                    <td th:if="${isAdminSigned and !user.isAdmin()}">
                         <a data-toggle="modal" data-target="#modal-soft-delete"
                            th:attr="data-target='#modal-soft-delete'+${user.id}"
-                           th:href="${'user/softDelete/' + user.id}"
+                           th:href="${'user/delete/' + user.id}"
                            class="btn btn-outline-danger btn-sm">Delete
                         </a>
                     </td>
-                    <td th:if="${user.isAdmin()}"></td>
+                    <td th:if="${isAdminSigned and user.isAdmin()}"></td>
 
                     <!--modal for delete confirmation-->
                     <div class="modal" th:id="modal-soft-delete+${user.id }">
@@ -89,12 +87,13 @@
                                 </div>
                                 <div class="modal-body">
                                     <p th:text="${'Are you sure you want to delete user: &nbsp&nbsp'+user.name+'?'}"></p>
+                                    <small>After this action, the tasks will be retained, but without the owner.</small>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">
                                         Cancel
                                     </button>
-                                    <a th:href="${'/user/softDelete/' + user.id}">
+                                    <a th:href="${'/user/delete/' + user.id}">
                                         <span class="btn btn-danger">Delete</span></a>
                                 </div>
                             </div>

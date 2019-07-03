@@ -60,7 +60,7 @@ public class TaskController {
         User user = userService.getUserByEmail(email);
 
         Task task = new Task();
-        task.setCreator(user);
+        task.setCreatorName(user.getName());
         if (request.isUserInRole("ROLE_USER")) {
             task.setOwner(user);
         }

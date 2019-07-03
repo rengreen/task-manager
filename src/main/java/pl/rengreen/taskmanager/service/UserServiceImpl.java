@@ -8,24 +8,27 @@ import pl.rengreen.taskmanager.model.Role;
 import pl.rengreen.taskmanager.model.Task;
 import pl.rengreen.taskmanager.model.User;
 import pl.rengreen.taskmanager.repository.RoleRepository;
+import pl.rengreen.taskmanager.repository.TaskRepository;
 import pl.rengreen.taskmanager.repository.UserRepository;
 
 import java.util.*;
 
 @Service
 public class UserServiceImpl implements UserService {
-    @Value("${default.admin.mail}")
-    private String defaultAdminMail;
 
     private UserRepository userRepository;
+    private TaskRepository taskRepository;
     private RoleRepository roleRepository;
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
+
     @Autowired
     public UserServiceImpl(UserRepository userRepository,
+                           TaskRepository taskRepository,
                            RoleRepository roleRepository,
                            BCryptPasswordEncoder bCryptPasswordEncoder) {
         this.userRepository = userRepository;
+        this.taskRepository = taskRepository;
         this.roleRepository = roleRepository;
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     }
@@ -33,7 +36,6 @@ public class UserServiceImpl implements UserService {
     @Override
     public User createUser(User user) {
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-        user.setDeleted(0);
         Role userRole = roleRepository.findByRole("USER");
         user.setRoles(new ArrayList<>(Collections.singletonList(userRole)));
         return userRepository.save(user);
@@ -67,17 +69,10 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void softDelete(Long id) {
-
+    public void deleteUser(Long id) {
         User user = userRepository.getOne(id);
-        User defaultUser = userRepository.findByEmail(defaultAdminMail);
-
-        user.getTasksInProgress().forEach(task -> task.setOwner(null));
-        user.getTasksCompleted().forEach(task -> task.setOwner(defaultUser));
-        user.getTasksCreated().forEach(task -> task.setCreator(defaultUser));
-        user.setDeleted(1);
-        userRepository.save(user);
-
+        user.getTasksOwned().forEach(task -> task.setOwner(null));
+        userRepository.delete(user);
     }
 
 }

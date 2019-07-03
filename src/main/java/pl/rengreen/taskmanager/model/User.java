@@ -1,6 +1,5 @@
 package pl.rengreen.taskmanager.model;
 
-import org.hibernate.annotations.Where;
 import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
@@ -10,7 +9,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Entity
-@Where(clause = "DELETED = 0")
 public class User {
 
     @Id
@@ -28,11 +26,7 @@ public class User {
     private String password;
     @Column(columnDefinition = "VARCHAR(255) DEFAULT 'images/user.png'")
     private String photo;
-    @Column(name = "DELETED")
-    private Integer deleted;
-    @OneToMany(mappedBy = "creator", cascade = CascadeType.ALL)
-    private List<Task> tasksCreated;
-    @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "owner", cascade = CascadeType.PERSIST)
     private List<Task> tasksOwned;
 
     @ManyToMany(cascade = CascadeType.MERGE)
@@ -52,7 +46,7 @@ public class User {
                 .filter(task -> !task.isCompleted())
                 .collect(Collectors.toList());
     }
-    
+
     public boolean isAdmin(){
         String roleName="ADMIN";
         return roles.stream().map(Role::getRole).anyMatch(roleName::equals);
@@ -75,16 +69,12 @@ public class User {
                 @NotEmpty String name,
                 @NotEmpty @Length(min = 5) String password,
                 String photo,
-                int deleted,
-                List<Task> tasksCreated,
                 List<Task> tasksOwned,
                 List<Role> roles) {
         this.email = email;
         this.name = name;
         this.password = password;
         this.photo = photo;
-        this.deleted = deleted;
-        this.tasksCreated = tasksCreated;
         this.tasksOwned = tasksOwned;
         this.roles = roles;
     }
@@ -127,22 +117,6 @@ public class User {
 
     public void setPhoto(String photo) {
         this.photo = photo;
-    }
-
-    public Integer getDeleted() {
-        return deleted;
-    }
-
-    public void setDeleted(Integer deleted) {
-        this.deleted = deleted;
-    }
-
-    public List<Task> getTasksCreated() {
-        return tasksCreated;
-    }
-
-    public void setTasksCreated(List<Task> tasksCreated) {
-        this.tasksCreated = tasksCreated;
     }
 
     public List<Task> getTasksOwned() {

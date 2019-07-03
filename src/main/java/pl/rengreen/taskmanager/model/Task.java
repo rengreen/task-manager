@@ -26,9 +26,7 @@ public class Task {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate date;
     private boolean isCompleted;
-    @ManyToOne
-    @JoinColumn(name = "CREATOR_ID")
-    private User creator;
+    private String creatorName;
     @ManyToOne
     @JoinColumn(name = "OWNER_ID")
     private User owner;
@@ -44,25 +42,25 @@ public class Task {
                 @NotEmpty @Size(max = 1200) String description,
                 @NotNull @FutureOrPresent LocalDate date,
                 boolean isCompleted,
-                User creator) {
+                String creatorName) {
         this.name = name;
         this.description = description;
         this.date = date;
         this.isCompleted = isCompleted;
-        this.creator = creator;
+        this.creatorName = creatorName;
     }
 
     public Task(@NotEmpty String name,
                 @NotEmpty @Size(max = 1200) String description,
                 @NotNull LocalDate date,
                 boolean isCompleted,
-                User creator,
+                String creatorName,
                 User owner) {
         this.name = name;
         this.description = description;
         this.date = date;
         this.isCompleted = isCompleted;
-        this.creator = creator;
+        this.creatorName = creatorName;
         this.owner = owner;
     }
 
@@ -106,12 +104,12 @@ public class Task {
         isCompleted = completed;
     }
 
-    public User getCreator() {
-        return creator;
+    public String getCreatorName() {
+        return creatorName;
     }
 
-    public void setCreator(User creator) {
-        this.creator = creator;
+    public void setCreatorName(String creatorName) {
+        this.creatorName = creatorName;
     }
 
     public User getOwner() {
@@ -122,4 +120,12 @@ public class Task {
         this.owner = owner;
     }
 
+    @Override
+    public String toString() {
+        return "Task{" +
+                "name='" + name + '\'' +
+                ", creatorName='" + creatorName + '\'' +
+                ", owner=" + owner +
+                '}';
+    }
 }
