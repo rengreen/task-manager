@@ -30,20 +30,19 @@ public class TaskController {
 
     @GetMapping("/tasks")
     public String listTasks(Model model, Principal principal, SecurityContextHolderAwareRequestWrapper request) {
-        String email=principal.getName();
-        User signedUser = userService.getUserByEmail(email);
-        boolean isAdminSigned = request.isUserInRole("ROLE_ADMIN");
-
-        model.addAttribute("tasks", taskService.findAll());
-        model.addAttribute("users", userService.findAll());
-        model.addAttribute("signedUser", signedUser);
-        model.addAttribute("isAdminSigned", isAdminSigned);
+        prepareTasksListModel(model, principal, request);
         model.addAttribute("onlyInProgress", false);
         return "views/tasksList";
     }
 
     @GetMapping("/tasks/inProgress")
     public String listTasksInProgress(Model model, Principal principal, SecurityContextHolderAwareRequestWrapper request) {
+        prepareTasksListModel(model, principal, request);
+        model.addAttribute("onlyInProgress", true);
+        return "views/tasksList";
+    }
+
+    private void prepareTasksListModel(Model model, Principal principal, SecurityContextHolderAwareRequestWrapper request){
         String email=principal.getName();
         User signedUser = userService.getUserByEmail(email);
         boolean isAdminSigned = request.isUserInRole("ROLE_ADMIN");
@@ -52,8 +51,7 @@ public class TaskController {
         model.addAttribute("users", userService.findAll());
         model.addAttribute("signedUser", signedUser);
         model.addAttribute("isAdminSigned", isAdminSigned);
-        model.addAttribute("onlyInProgress", true);
-        return "views/tasksList";
+
     }
 
     @GetMapping("task/create")
