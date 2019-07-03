@@ -120,12 +120,4 @@ public class Task {
         this.owner = owner;
     }
 
-    @Override
-    public String toString() {
-        return "Task{" +
-                "name='" + name + '\'' +
-                ", creatorName='" + creatorName + '\'' +
-                ", owner=" + owner +
-                '}';
-    }
 }

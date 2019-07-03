@@ -66,9 +66,11 @@ main.container {
 table.dataTable thead .sorting_asc {
     background: url("http://cdn.datatables.net/1.10.0/images/sort_asc.png") no-repeat bottom left;
 }
+
 table.dataTable thead .sorting_desc {
     background: url("http://cdn.datatables.net/1.10.0/images/sort_desc.png") no-repeat bottom left;
 }
+
 table.dataTable thead .sorting {
     background: url("http://cdn.datatables.net/1.10.0/images/sort_both.png") no-repeat bottom left;
 }

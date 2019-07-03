@@ -44,7 +44,7 @@
 
                 <tr th:each="t : ${tasks}"
                     th:if="${!onlyInProgress or !t.completed}"
-                th:with="isThisOneSigned=${t.owner!=null ? t.owner.equals(signedUser) : false}"
+                    th:with="isThisOneSigned=${t.owner!=null ? t.owner.equals(signedUser) : false}"
                 >
                     <!--Task name and description link-->
                     <td class="text-left">

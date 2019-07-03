@@ -42,8 +42,8 @@ public class TaskController {
         return "views/tasksList";
     }
 
-    private void prepareTasksListModel(Model model, Principal principal, SecurityContextHolderAwareRequestWrapper request){
-        String email=principal.getName();
+    private void prepareTasksListModel(Model model, Principal principal, SecurityContextHolderAwareRequestWrapper request) {
+        String email = principal.getName();
         User signedUser = userService.getUserByEmail(email);
         boolean isAdminSigned = request.isUserInRole("ROLE_ADMIN");
 
@@ -56,7 +56,7 @@ public class TaskController {
 
     @GetMapping("task/create")
     public String showEmptyTaskFormForUser(Model model, Principal principal, SecurityContextHolderAwareRequestWrapper request) {
-        String email=principal.getName();
+        String email = principal.getName();
         User user = userService.getUserByEmail(email);
 
         Task task = new Task();
