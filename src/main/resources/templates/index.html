@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org"
       lang="en">
 <head>
     <!--/*/ <th:block th:include="fragments/head :: head"></th:block> /*/-->
@@ -13,21 +12,37 @@
 </header>
 
 <main class="container">
-    <h1 class="display-2">Welcome to Task Manager</h1>
-    <p class="lead">Spring Boot application that helps you get stuff done</p>
+    <h1 class="display-4">Welcome to Task Manager</h1>
+    <p class="lead">This application will help you get stuff done</p>
 
     <hr class="my-4">
-    <h3>Features</h3>
+    <p>Most features require logging in. Not authorized users have access to the welcome screen and login or registration panel.</p>
+
+    <p>Admin (manager) can:</p>
     <ul>
-        <li>user login and registration</li>
-        <li>user roles</li>
-        <li>Spring Security authentication</li>
-        <li>access to navigation menu items based on user roles</li>
-        <li>creating, updating and deleting tasks</li>
-        <li>assigning task to user</li>
-        <li>marking task as done</li>
-        <li>H2 database</li>
-        <li>visual representation with Thymeleaf, Bootstrap and jQuery</li>
+        <li>Create task and assign task to any user</li>
+        <li>View list of all users with possibility to delete user</li>
+        <li>View list of all tasks with editing or deleting task</li>
+    </ul>
+        <p>Common user (employee) can:</p>
+    <ul>
+        <li>Create task only for himself</li>
+        <li>View list of all users with no action allowed</li>
+        <li>View list of all tasks but edit or delete only tasks for which he is responsible</li>
+    </ul>
+
+    <p>Every authorized user can:</p>
+    <ul>
+        <li>View his own profile</li>
+        <li>Switch task as completed/uncompleted</li>
+
+    </ul>
+
+    <h4>Test users:</h4>
+    <ul>
+        <li>manager@mail.com, password: 112233</li>
+        <li>ann@mail.com, password: 112233</li>
+        <li>mark@mail.com, password: 112233</li>
     </ul>
 </main>
 
