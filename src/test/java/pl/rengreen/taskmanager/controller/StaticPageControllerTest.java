@@ -20,7 +20,7 @@ public class StaticPageControllerTest {
     }
 
     @Test
-    public void testStaticPage() throws Exception {
+    public void showAboutPage_shouldReturnStatusOkAndAboutAsViewName() throws Exception {
         mockMvc.perform(get("/about"))
                 .andExpect(status().isOk())
                 .andExpect(view().name("views/about"));

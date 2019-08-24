@@ -55,7 +55,7 @@ public class TaskController {
     }
 
     @GetMapping("task/create")
-    public String showEmptyTaskFormForUser(Model model, Principal principal, SecurityContextHolderAwareRequestWrapper request) {
+    public String showEmptyTaskForm(Model model, Principal principal, SecurityContextHolderAwareRequestWrapper request) {
         String email = principal.getName();
         User user = userService.getUserByEmail(email);
 

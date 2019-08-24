@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class StaticPageController {
 
     @RequestMapping("/about")
-    String about(){
+    String showAboutPage(){
         return "views/about";
     }
 }

@@ -19,7 +19,7 @@ public class IndexControllerTest {
     }
 
     @Test
-    public void testIndex() throws Exception {
+    public void index_shouldReturnStatusOkAndIndexAsViewName() throws Exception {
         mockMvc.perform(get("/"))
                 .andExpect(status().isOk())
                 .andExpect(view().name("index"));
