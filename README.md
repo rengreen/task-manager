@@ -11,15 +11,16 @@ Not authorized users have access to the welcome screen and login or registration
 -	Create task and assign task to any user
 -	View list of all users with possibility to delete user
 -	View list of all tasks with editing or deleting task
+-	Switch task as completed/uncompleted
 	
 **Common user (employee) can:**
 -	Create task only for himself
 -	View list of all users with no action allowed
 -	View list of all tasks but edit or delete only tasks for which he is responsible 
+-	Switch owned task as completed/uncompleted
 	
 **Every authorized user can:** 
 -	View his own profile
--	Switch task as completed/uncompleted
 
 
 ## Built With
