@@ -15,14 +15,14 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "user_id")
     private Long id;
-    @Email
-    @NotEmpty
+    @Email(message = "{user.email.not.valid}")
+    @NotEmpty(message = "{user.email.not.empty}")
     @Column(unique = true)
     private String email;
-    @NotEmpty
+    @NotEmpty(message = "{user.name.not.empty}")
     private String name;
-    @NotEmpty
-    @Length(min = 5)
+    @NotEmpty(message = "{user.password.not.empty}")
+    @Length(min = 5, message = "{user.password.length}")
     private String password;
     @Column(columnDefinition = "VARCHAR(255) DEFAULT 'images/user.png'")
     private String photo;

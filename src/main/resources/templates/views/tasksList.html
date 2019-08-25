@@ -108,15 +108,14 @@
                         </a>
                     </td>
 
-
                     <td th:data-order="${t.completed} ? 1 : 0"
-                            th:unless="${isAdminSigned or isThisOneSigned}">
+                        th:unless="${isAdminSigned or isThisOneSigned}">
                         <span data-toggle="tooltip" data-placement="top" data-html="true"
                               title="Only task owner or admin can mark tasks completed/uncompleted">
                             <a th:href="${t.completed} ? ${'/task/markUndone/' + t.id} : ${'/task/markDone/' + t.id}"
                                class="disabled nav-link my-link"
                             ><i th:class="${t.completed} ? 'far fa-check-square my-check':'far fa-square my-check'"></i>
-                        </a>
+                            </a>
                         </span>
                     </td>
 

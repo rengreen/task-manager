@@ -3,7 +3,6 @@ package pl.rengreen.taskmanager.model;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
-import javax.validation.constraints.FutureOrPresent;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -16,13 +15,13 @@ public class Task {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "task_id")
     private Long id;
-    @NotEmpty
+    @NotEmpty(message = "{task.name.not.empty}")
     private String name;
-    @NotEmpty
+    @NotEmpty(message = "{task.description.not.empty}")
     @Column(length = 1200)
-    @Size(max = 1200)
+    @Size(max = 1200, message = "{task.description.size}")
     private String description;
-    @NotNull
+    @NotNull(message = "{task.date.not.null}")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate date;
     private boolean isCompleted;
@@ -40,7 +39,7 @@ public class Task {
 
     public Task(@NotEmpty String name,
                 @NotEmpty @Size(max = 1200) String description,
-                @NotNull @FutureOrPresent LocalDate date,
+                @NotNull LocalDate date,
                 boolean isCompleted,
                 String creatorName) {
         this.name = name;
