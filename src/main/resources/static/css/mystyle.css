@@ -16,6 +16,15 @@ main.container {
     text-align: center;
 }
 
+.error-page-footer {
+    position: absolute;
+    right: 30px;
+    bottom: 30px;
+    width: 100%;
+    height: 45px;
+    text-align: right;
+}
+
 .my-photo-miniature {
     height: 2.0rem;
     width: 1.5rem
@@ -51,6 +60,11 @@ main.container {
 
 .my-check {
     font-size: 1.5rem;
+}
+
+.my-error-background {
+    background-image: url("../images/error-background.jpg");
+    background-size: cover;
 }
 
 .my-button-selected,
