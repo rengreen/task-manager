@@ -100,11 +100,24 @@
                     </td>
 
                     <!--Completed / In progress-->
-                    <td th:data-order="${t.completed} ? 1 : 0">
+                    <td th:data-order="${t.completed} ? 1 : 0"
+                        th:if="${isAdminSigned or isThisOneSigned}">
                         <a th:href="${t.completed} ? ${'/task/markUndone/' + t.id} : ${'/task/markDone/' + t.id}"
                            th:class="${t.owner==null} ? 'disabled nav-link my-link' : 'nav-link my-link'"
                         ><i th:class="${t.completed} ? 'far fa-check-square my-check':'far fa-square my-check'"></i>
                         </a>
+                    </td>
+
+
+                    <td th:data-order="${t.completed} ? 1 : 0"
+                            th:unless="${isAdminSigned or isThisOneSigned}">
+                        <span data-toggle="tooltip" data-placement="top" data-html="true"
+                              title="Only task owner or admin can mark tasks completed/uncompleted">
+                            <a th:href="${t.completed} ? ${'/task/markUndone/' + t.id} : ${'/task/markDone/' + t.id}"
+                               class="disabled nav-link my-link"
+                            ><i th:class="${t.completed} ? 'far fa-check-square my-check':'far fa-square my-check'"></i>
+                        </a>
+                        </span>
                     </td>
 
                     <!--Task owner-->
