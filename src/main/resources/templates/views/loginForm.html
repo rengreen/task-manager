@@ -23,6 +23,10 @@
                 <div class="alert alert-danger" th:if="${param.error}">
                     <h2>Invalid Email or Password</h2>
                 </div>
+                <!--Thymeleaf is automatically adding the CSRF token to the form
+                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                https://docs.spring.io/spring-security/site/docs/current/guides/html5/form-javaconfig.html
+                -->
                 <form th:action="@{/login}" method="post">
 
                     <div class="form-group">
