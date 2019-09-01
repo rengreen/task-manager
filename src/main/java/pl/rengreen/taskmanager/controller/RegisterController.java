@@ -24,18 +24,18 @@ public class RegisterController {
     @GetMapping("/register")
     public String showRegisterForm(Model model) {
         model.addAttribute("user", new User());
-        return "views/registerForm";
+        return "forms/register";
     }
 
     @PostMapping("/register")
     public String registerUser(@Valid User user, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
-            return "views/registerForm";
+            return "forms/register";
         }
 
         if (userService.isUserEmailPresent(user.getEmail())) {
             model.addAttribute("exist", true);
-            return "views/registerForm";
+            return "register";
         }
 
         userService.createUser(user);

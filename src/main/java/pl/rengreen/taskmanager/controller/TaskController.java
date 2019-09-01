@@ -32,14 +32,14 @@ public class TaskController {
     public String listTasks(Model model, Principal principal, SecurityContextHolderAwareRequestWrapper request) {
         prepareTasksListModel(model, principal, request);
         model.addAttribute("onlyInProgress", false);
-        return "views/tasksList";
+        return "views/tasks";
     }
 
     @GetMapping("/tasks/in-progress")
     public String listTasksInProgress(Model model, Principal principal, SecurityContextHolderAwareRequestWrapper request) {
         prepareTasksListModel(model, principal, request);
         model.addAttribute("onlyInProgress", true);
-        return "views/tasksList";
+        return "views/tasks";
     }
 
     private void prepareTasksListModel(Model model, Principal principal, SecurityContextHolderAwareRequestWrapper request) {
@@ -65,13 +65,13 @@ public class TaskController {
             task.setOwner(user);
         }
         model.addAttribute("task", task);
-        return "views/emptyTaskForm";
+        return "forms/task-new";
     }
 
     @PostMapping("/task/create")
     public String createTask(@Valid Task task, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
-            return "views/emptyTaskForm";
+            return "forms/task-new";
         }
         taskService.createTask(task);
 
@@ -81,13 +81,13 @@ public class TaskController {
     @GetMapping("/task/edit/{id}")
     public String showFilledTaskForm(@PathVariable Long id, Model model) {
         model.addAttribute("task", taskService.getTaskById(id));
-        return "views/filledTaskForm";
+        return "forms/task-edit";
     }
 
     @PostMapping("/task/edit/{id}")
     public String updateTask(@Valid Task task, BindingResult bindingResult, @PathVariable Long id, Model model) {
         if (bindingResult.hasErrors()) {
-            return "views/filledTaskForm";
+            return "forms/task-edit";
         }
         taskService.updateTask(id, task);
         return "redirect:/tasks";

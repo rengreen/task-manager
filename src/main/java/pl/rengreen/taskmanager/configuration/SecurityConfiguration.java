@@ -38,10 +38,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/register", "/", "/login", "/about", "/css/**", "/webjars/**")
                 .permitAll()
 
-                .antMatchers("/profile", "/tasks/**", "/task/**", "/users", "/user/**", "/h2-console/**")
+                .antMatchers("/profile/**", "/tasks/**", "/task/**", "/users", "/user/**", "/h2-console/**")
                 .hasAnyRole("USER, ADMIN")
 
-                .antMatchers("/assign")
+                .antMatchers("/assignment/**")
                 .hasAnyRole("ADMIN")
 
                 .and()

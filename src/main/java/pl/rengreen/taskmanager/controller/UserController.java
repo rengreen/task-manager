@@ -24,7 +24,7 @@ public class UserController {
 
         model.addAttribute("users", userService.findAll());
         model.addAttribute("isAdminSigned", isAdminSigned);
-        return "views/usersList";
+        return "views/users";
     }
 
     @GetMapping("user/delete/{id}")
