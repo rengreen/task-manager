@@ -60,7 +60,7 @@
 
                     <!--Completed/In progress-->
                     <td>
-                        <a th:href="${t.completed} ? ${'/profile/markUndone/' + t.id} : ${'/profile/markDone/' + t.id}"
+                        <a th:href="${t.completed} ? ${'/profile/unmark-done/' + t.id} : ${'/profile/mark-done/' + t.id}"
                            th:class="${t.owner==null} ? 'disabled nav-link my-link' : 'nav-link my-link'"
                         ><i th:class="${t.completed} ? 'far fa-check-square my-check':'far fa-square my-check'"></i>
                         </a>

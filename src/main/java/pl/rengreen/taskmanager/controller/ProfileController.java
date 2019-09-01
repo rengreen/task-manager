@@ -32,13 +32,13 @@ public class ProfileController {
         return "views/profile";
     }
 
-    @GetMapping("/profile/markDone/{taskId}")
+    @GetMapping("/profile/mark-done/{taskId}")
     public String setTaskCompleted(@PathVariable Long taskId) {
         taskService.setTaskCompleted(taskId);
         return "redirect:/profile";
     }
 
-    @GetMapping("/profile/markUndone/{taskId}")
+    @GetMapping("/profile/unmark-done/{taskId}")
     public String setTaskNotCompleted(@PathVariable Long taskId) {
         taskService.setTaskNotCompleted(taskId);
         return "redirect:/profile";

@@ -17,7 +17,7 @@
 
         <h3 class="card-header">Tasks List
             <span th:unless="${onlyInProgress}">
-                <a href="/tasks/inProgress" class="btn btn-outline-info btn-lg float-right">Hide Completed Tasks</a>
+                <a href="/tasks/in-progress" class="btn btn-outline-info btn-lg float-right">Hide Completed Tasks</a>
             </span>
             <span th:if="${onlyInProgress}">
                 <a href="/tasks" class="btn btn-outline-info btn-lg float-right">Show Completed Tasks</a>
@@ -102,7 +102,7 @@
                     <!--Completed / In progress-->
                     <td th:data-order="${t.completed} ? 1 : 0"
                         th:if="${isAdminSigned or isThisOneSigned}">
-                        <a th:href="${t.completed} ? ${'/task/markUndone/' + t.id} : ${'/task/markDone/' + t.id}"
+                        <a th:href="${t.completed} ? ${'/task/unmark-done/' + t.id} : ${'/task/mark-done/' + t.id}"
                            th:class="${t.owner==null} ? 'disabled nav-link my-link' : 'nav-link my-link'"
                         ><i th:class="${t.completed} ? 'far fa-check-square my-check':'far fa-square my-check'"></i>
                         </a>
@@ -112,7 +112,7 @@
                         th:unless="${isAdminSigned or isThisOneSigned}">
                         <span data-toggle="tooltip" data-placement="top" data-html="true"
                               title="Only task owner or admin can mark tasks completed/uncompleted">
-                            <a th:href="${t.completed} ? ${'/task/markUndone/' + t.id} : ${'/task/markDone/' + t.id}"
+                            <a th:href="${t.completed} ? ${'/task/unmark-done/' + t.id} : ${'/task/mark-done/' + t.id}"
                                class="disabled nav-link my-link"
                             ><i th:class="${t.completed} ? 'far fa-check-square my-check':'far fa-square my-check'"></i>
                             </a>

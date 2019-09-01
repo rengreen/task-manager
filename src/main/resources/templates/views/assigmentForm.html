@@ -27,7 +27,7 @@
             <div class="card-deck">
                 <div th:each="user:${users}" class="col-3">
 
-                    <a th:href="${'/assign/' + user.id}" class="btn text-left">
+                    <a th:href="${'/assignment/' + user.id}" class="btn text-left">
 
                         <!--user's card is highlighted when selected-->
                         <div class="card mb-3"
@@ -98,7 +98,7 @@
 
                                 <!--Unassign button-->
                                 <td>
-                                    <a th:href="${'/unassign/' + selectedUser.getId()+'/'+t.id}"
+                                    <a th:href="${'/assignment/unassign/' + selectedUser.getId()+'/'+t.id}"
                                        class="btn btn-outline-success btn-sm mb-2"
                                     >Unassign</a>
                                 </td>
@@ -148,7 +148,7 @@
 
                                 <!--Assign button-->
                                 <td>
-                                    <a th:href="${'/assign/' + selectedUser.getId()+'/'+ft.id}"
+                                    <a th:href="${'/assignment/assign/' + selectedUser.getId()+'/'+ft.id}"
                                        class="btn btn-outline-success btn-sm mb-2"
                                     >Assign</a>
                                 </td>
