@@ -1,7 +1,6 @@
 package pl.rengreen.taskmanager.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import pl.rengreen.taskmanager.model.Role;
@@ -15,6 +14,8 @@ import java.util.*;
 
 @Service
 public class UserServiceImpl implements UserService {
+    private static final String ADMIN="ADMIN";
+    private static final String USER="USER";
 
     private UserRepository userRepository;
     private TaskRepository taskRepository;
@@ -36,14 +37,14 @@ public class UserServiceImpl implements UserService {
     @Override
     public User createUser(User user) {
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-        Role userRole = roleRepository.findByRole("USER");
+        Role userRole = roleRepository.findByRole(USER);
         user.setRoles(new ArrayList<>(Collections.singletonList(userRole)));
         return userRepository.save(user);
     }
 
     @Override
     public User changeRoleToAdmin(User user) {
-        Role adminRole = roleRepository.findByRole("ADMIN");
+        Role adminRole = roleRepository.findByRole(ADMIN);
         user.setRoles(new ArrayList<>(Collections.singletonList(adminRole)));
         return userRepository.save(user);
     }
