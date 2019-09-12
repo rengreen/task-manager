@@ -6,6 +6,7 @@ import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Entity
@@ -135,4 +136,22 @@ public class User {
         this.roles = roles;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return Objects.equals(id, user.id) &&
+                email.equals(user.email) &&
+                name.equals(user.name) &&
+                password.equals(user.password) &&
+                Objects.equals(photo, user.photo) &&
+                Objects.equals(tasksOwned, user.tasksOwned) &&
+                Objects.equals(roles, user.roles);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, email, name, password, photo, tasksOwned, roles);
+    }
 }

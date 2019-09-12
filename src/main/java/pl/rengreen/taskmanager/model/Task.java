@@ -8,6 +8,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.time.*;
 import java.time.temporal.ChronoUnit;
+import java.util.Objects;
 
 @Entity
 public class Task {
@@ -119,4 +120,22 @@ public class Task {
         this.owner = owner;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Task task = (Task) o;
+        return isCompleted == task.isCompleted &&
+                Objects.equals(id, task.id) &&
+                name.equals(task.name) &&
+                description.equals(task.description) &&
+                date.equals(task.date) &&
+                Objects.equals(creatorName, task.creatorName) &&
+                Objects.equals(owner, task.owner);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, description, date, isCompleted, creatorName, owner);
+    }
 }
