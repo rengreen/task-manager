@@ -7,6 +7,14 @@ main.container {
     padding: 80px 5px 60px 5px;
 }
 
+.my-highest-header {
+    font-size: 2rem;
+}
+
+.my-second-header {
+    font-size: 1.5rem;
+}
+
 .footer {
     position: absolute;
     bottom: 30px;

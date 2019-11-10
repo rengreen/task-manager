@@ -12,13 +12,13 @@
             <h1>Something went wrong</h1>
         </div>
         <div class="card-body">
-            <h4 th:if="${status}">
+            <h2 class="my-second-header" th:if="${status}">
                 <b>Response Status:</b> <span th:text="${status}">status-code</span> <span
                     th:if="${error}" th:text="'('+${error}+')'">error ...</span>
-            </h4>
-            <h4 th:if="${url}">
+            </h2>
+            <h2 class="my-second-header" th:if="${url}">
                 <b>Page:</b> <span th:text="${url}">Page URL</span>
-            </h4>
+            </h2>
             <h4 th:if="${timestamp}" id='created'>
                 <b>Occurred:</b> <span th:text="${timestamp}">Timestamp</span>
             </h4>

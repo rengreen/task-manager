@@ -17,12 +17,12 @@
 
     <div class="card mb-3">
         <div class="card-header">
-            <h3>Assign tasks to user</h3>
+            <h1 class="my-highest-header">Assign tasks to user</h1>
         </div>
         <!--card with all user miniatures, full width--------------------------------------->
         <div class="card-body">
 
-            <h4>Choose user</h4>
+            <h2 class="my-second-header">Choose user</h2>
 
             <div class="card-deck">
                 <div th:each="user:${users}" class="col-12 col-sm-3">
@@ -57,12 +57,12 @@
 
             <hr class="my-4">
 
-            <h4 th:if="${selectedUser==null}">No user is selected</h4>
-            <h4 th:unless="${selectedUser==null}">
+            <h2 class="my-second-header" th:if="${selectedUser==null}">No user is selected</h2>
+            <h2 class="my-second-header" th:unless="${selectedUser==null}">
                 <span class="text-success"
                       th:text="${selectedUser.getName() +' is selected'}">
                 </span>
-            </h4>
+            </h2>
 
             <hr class="my-4">
 
@@ -73,7 +73,9 @@
                 <div class="col-sm-6 col-12">
                     <div class="card mr-2">
                         <div class="card-header">
-                            <h4 th:text="'Tasks in Progress ('+${selectedUser.getName()}+' is working on them)'"></h4>
+                            <h2 class="my-second-header"
+                                th:text="'Tasks in Progress ('+${selectedUser.getName()}+' is working on them)'"
+                            ></h2>
                         </div>
                         <table class="table table-hover text-left">
                             <thead class="table-info">
@@ -121,7 +123,9 @@
                 <div class="col-sm-6 col-12">
                     <div class="card ml-2">
                         <div class="card-header">
-                            <h4 th:text="'Free Tasks (assign them to '+${selectedUser.getName()}+')'"></h4>
+                            <h2 class="my-second-header"
+                                th:text="'Free Tasks (assign them to '+${selectedUser.getName()}+')'"
+                            ></h2>
                         </div>
 
                         <table class="my-tab table table-hover text-left">

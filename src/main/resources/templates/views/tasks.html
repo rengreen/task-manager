@@ -15,14 +15,14 @@
 <main class="container">
     <div class="card mb-3">
 
-        <h3 class="card-header">Tasks List
+        <h1 class="my-highest-header card-header">Tasks List
             <span th:unless="${onlyInProgress}">
                 <a href="/tasks/in-progress" class="btn btn-outline-info btn-lg float-right">Hide Completed Tasks</a>
             </span>
             <span th:if="${onlyInProgress}">
                 <a href="/tasks" class="btn btn-outline-info btn-lg float-right">Show Completed Tasks</a>
             </span>
-        </h3>
+        </h1>
 
         <div class="card card-body">
             <table id="sortableTable" class="my-tab table table-hover text-center" style="table-layout: fixed; width: 100%;">
