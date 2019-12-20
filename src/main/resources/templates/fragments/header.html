@@ -15,42 +15,42 @@
             <ul class="navbar-nav mr-auto">
 
                 <!--Home-->
-                <li th:class="${activeTab == 'home'}? 'active nav-item mx-2' : 'nav-item mx-2'">
+                <li th:class="${activeTab == 'home'}? 'active nav-item mr-4' : 'nav-item mr-4'">
                     <a class="nav-link" href="/">Home</a>
                 </li>
 
                 <!--Tasks list-->
-                <li th:class="${activeTab == 'tasks-list'}? 'active nav-item mx-2' : 'nav-item mx-2'"
+                <li th:class="${activeTab == 'tasks-list'}? 'active nav-item mr-4' : 'nav-item mr-4'"
                     sec:authorize="isAuthenticated()">
                     <a class="nav-link" href="/tasks">Tasks List</a>
                 </li>
 
                 <!--Assign tasks-->
-                <li th:class="${activeTab == 'assign-tasks'}? 'active nav-item mx-2' : 'nav-item mx-2'"
+                <li th:class="${activeTab == 'assign-tasks'}? 'active nav-item mr-4' : 'nav-item mr-4'"
                     sec:authorize="hasRole('ROLE_ADMIN')">
                     <a class="nav-link" href="/assignment">Assign Tasks</a>
                 </li>
 
                 <!--Create New Task-->
-                <li th:class="${activeTab == 'create-new-task'}? 'active nav-item mx-2' : 'nav-item mx-2'"
+                <li th:class="${activeTab == 'create-new-task'}? 'active nav-item mr-4' : 'nav-item mr-4'"
                     sec:authorize="isAuthenticated()">
                     <a class="nav-link" href="/task/create">Create New Task</a>
                 </li>
 
                 <!--Users List-->
-                <li th:class="${activeTab == 'users-list'}? 'active nav-item mx-2' : 'nav-item mx-2'"
+                <li th:class="${activeTab == 'users-list'}? 'active nav-item mr-4' : 'nav-item mr-4'"
                     sec:authorize="isAuthenticated()">
                     <a class="nav-link" href="/users">Users List</a>
                 </li>
 
                 <!--Profile-->
-                <li th:class="${activeTab == 'profile'}? 'active nav-item mx-2' : 'nav-item mx-2'"
+                <li th:class="${activeTab == 'profile'}? 'active nav-item mr-4' : 'nav-item mr-4'"
                     sec:authorize="isAuthenticated()">
                     <a class="nav-link" href="/profile">Your Profile</a>
                 </li>
 
-               <!--About-->
-                <li th:class="${activeTab == 'about'}? 'active nav-item mx-2' : 'nav-item mx-2'">
+                <!--About-->
+                <li th:class="${activeTab == 'about'}? 'active nav-item mr-4' : 'nav-item mr-4'">
                     <a class="nav-link" href="/about">About</a>
                 </li>
             </ul>
@@ -59,21 +59,23 @@
                 <li class="nav-item" sec:authorize="isAuthenticated()">
                     <a class="nav-link" href="/profile" sec:authentication="name"></a>
                 </li>
-                <li th:class="${activeTab == 'register'}? 'active nav-item mx-2' : 'nav-item mx-2'"
+                <li th:class="${activeTab == 'register'}? 'active nav-item mr-4' : 'nav-item mr-4'"
                     sec:authorize="!isAuthenticated()">
                     <a class="nav-link" href="/register">Register</a>
                 </li>
-                <li th:class="${activeTab == 'login'}? 'active nav-item mx-2' : 'nav-item mx-2'"
+                <li th:class="${activeTab == 'login'}? 'active nav-item mr-4' : 'nav-item mr-4'"
                     sec:authorize="!isAuthenticated()">
                     <a class="nav-link" href="/login">Login</a>
                 </li>
+                <li>
+                    <form class="form-inline my-2 my-lg-0"
+                          th:action="@{logout}" method="post"
+                          sec:authorize="isAuthenticated()">
+                        <button class="btn btn-secondary my-2 my-sm-0 mr-4" type="submit">Log out</button>
+                    </form>
+                </li>
             </ul>
 
-            <form class="form-inline my-2 my-lg-0"
-                  th:action="@{logout}" method="post"
-                  sec:authorize="isAuthenticated()">
-                <button class="btn btn-secondary my-2 my-sm-0 mx-2" type="submit">Log out</button>
-            </form>
         </div>
     </nav>
 
