@@ -33,6 +33,8 @@ Not authorized users have access to the welcome screen and login or registration
 * jQuery
 
 ## Test users
+Paste email and password into the login form or click one of demo buttons under the login form to quickly insert them:  
+
 manager@mail.com, password: 112233  
 ann@mail.com, password: 112233  
 mark@mail.com, password: 112233
