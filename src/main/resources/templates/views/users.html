@@ -24,9 +24,9 @@
                 <thead class="table-info">
                 <tr>
                     <th>Name</th>
-                    <th>Email</th>
+                    <th class="d-none d-lg-table-cell">Email</th>
                     <th>Tasks in progress</th>
-                    <th>Tasks completed</th>
+                    <th class="d-none d-md-table-cell">Tasks completed</th>
                     <th th:if="${isAdminSigned}">Action</th>
                 </tr>
                 </thead>
@@ -42,7 +42,7 @@
                     </td>
 
                     <!--Email-->
-                    <td th:text="${user.email}"></td>
+                    <td th:text="${user.email}" class="d-none d-lg-table-cell"></td>
 
                     <!--Tasks in  progress-->
                     <td th:if="${user.getTasksInProgress().size() gt 0}">
@@ -56,14 +56,14 @@
                     <td th:if="${user.getTasksInProgress().size()==0}">0</td>
 
                     <!--Tasks completed-->
-                    <td th:if="${user.getTasksCompleted().size() gt 0}">
+                    <td th:if="${user.getTasksCompleted().size() gt 0}" class="d-none d-md-table-cell">
                         <ol class="pl-3">
                             <li th:each="t : ${user.getTasksCompleted()}">
                                 <span th:text="${t.name}"></span>
                             </li>
                         </ol>
                     </td>
-                    <td th:if="${user.getTasksCompleted().size()==0}">0</td>
+                    <td th:if="${user.getTasksCompleted().size()==0}" class="d-none d-md-table-cell">0</td>
 
                     <!--Delete button-->
                     <td th:if="${isAdminSigned and !user.isAdmin()}">
