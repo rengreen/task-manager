@@ -25,17 +25,18 @@
         </h1>
 
         <div class="card card-body">
-            <table id="sortableTable" class="my-tab table table-hover text-center" style="table-layout: fixed; width: 100%;">
+            <table id="sortableTable" class="my-tab table table-hover text-center"
+                   style="table-layout: fixed; width: 100%;">
 
                 <thead class="table-primary">
                 <tr>
                     <th style="width:40%" class="text-left">Task name</th>
                     <th style="width:12%">Date</th>
-                    <th style="width:8%">Days</th>
+                    <th style="width:8%" class="d-none d-lg-table-cell">Days left</th>
                     <th style="width:8%">Completed</th>
-                    <th style="width:8%">Task owner</th>
-                    <th style="width:8%">Task creator</th>
-                    <th style="width:16%" colspan="2">Actions</th>
+                    <th style="width:8%" class="d-none d-lg-table-cell">Task owner</th>
+                    <th style="width:8%" class="d-none d-lg-table-cell">Task creator</th>
+                    <th style="width:16%" class="d-none d-lg-table-cell" colspan="2">Actions</th>
                 </tr>
 
                 </thead>
@@ -78,6 +79,36 @@
                                 </div>
                                 <div class="modal-body">
                                     <p th:text="${'Description: '+t.description}"></p>
+                                    <p th:text="${'Date: '+#temporals.format(t.date, 'dd-MM-yyyy')}"></p>
+                                    <p th:if="${t.owner!=null}" th:text="${'Task owner: '+t.owner.getName()}"></p>
+                                    <p th:text="${'Task creator: '+t.creatorName}"></p>
+                                    <!--edit button-->
+                                    <div th:if="${isAdminSigned or isThisOneSigned}" class="d-lg-none m-2">
+                                        <a th:href="${'/task/edit/' + t.id}"
+                                           class="btn btn-outline-success btn-sm">Edit</a>
+                                    </div>
+
+                                    <div th:unless="${isAdminSigned or isThisOneSigned}" class="d-lg-none m-2">
+                                        <span data-toggle="tooltip" data-placement="top" data-html="true"
+                                                title="Only task owner or admin can edit this task">
+                                            <a th:href="${'/task/edit/' + t.id}" class="btn btn-outline-secondary btn-sm disabled">Edit</a>
+                                        </span>
+                                    </div>
+                                    <!--delete button-->
+                                    <div th:if="${isAdminSigned or isThisOneSigned}" class="d-lg-none m-2">
+                                        <a data-toggle="modal" data-target="#modal-delete"
+                                           th:attr="data-target='#modal-delete'+${t.id}"
+                                           th:href="${'/task/delete/' + t.id}"
+                                           class="btn btn-outline-danger btn-sm">Delete
+                                        </a>
+                                    </div>
+
+                                    <div th:unless="${isAdminSigned or isThisOneSigned}" class="d-lg-none m-2">
+                                        <span data-toggle="tooltip" data-placement="top" data-html="true"
+                                                title="Only task owner or admin can delete this task">
+                                            <a href="" class="btn btn-outline-secondary btn-sm disabled">Delete</a>
+                                        </span>
+                                    </div>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Close
@@ -94,7 +125,7 @@
                     ></td>
 
                     <!--Days left-->
-                    <td class="text-center col-1"
+                    <td class="text-center col-1 d-none d-lg-table-cell"
                         th:data-order="${t.date}">
                         <!--/*/ <th:block th:include="fragments/days-left-until-deadline :: daysLeft(${t})"></th:block> /*/-->
                     </td>
@@ -120,21 +151,21 @@
                     </td>
 
                     <!--Task owner-->
-                    <td th:if="${t.owner!=null}">
+                    <td th:if="${t.owner!=null}" class="d-none d-lg-table-cell">
                         <div th:text="${t.owner.getName()}"></div>
                     </td>
 
                     <td class="text-center" th:unless="${t.owner!=null}">-</td>
 
                     <!--Task creator-->
-                    <td th:text="${t.creatorName}"></td>
+                    <td th:text="${t.creatorName}" class="d-none d-lg-table-cell"></td>
 
                     <!--edit button-->
-                    <td th:if="${isAdminSigned or isThisOneSigned}">
+                    <td th:if="${isAdminSigned or isThisOneSigned}" class="d-none d-lg-table-cell">
                         <a th:href="${'/task/edit/' + t.id}" class="btn btn-outline-success btn-sm">Edit</a>
                     </td>
 
-                    <td th:unless="${isAdminSigned or isThisOneSigned}">
+                    <td th:unless="${isAdminSigned or isThisOneSigned}" class="d-none d-lg-table-cell">
                         <span data-toggle="tooltip" data-placement="top" data-html="true"
                               title="Only task owner or admin can edit this task">
                         <a th:href="${'/task/edit/' + t.id}" class="btn btn-outline-secondary btn-sm disabled">Edit</a>
@@ -142,7 +173,7 @@
                     </td>
 
                     <!--delete button-->
-                    <td th:if="${isAdminSigned or isThisOneSigned}">
+                    <td th:if="${isAdminSigned or isThisOneSigned}" class="d-none d-lg-table-cell">
                         <a data-toggle="modal" data-target="#modal-delete"
                            th:attr="data-target='#modal-delete'+${t.id}"
                            th:href="${'/task/delete/' + t.id}"
@@ -150,7 +181,7 @@
                         </a>
                     </td>
 
-                    <td th:unless="${isAdminSigned or isThisOneSigned}">
+                    <td th:unless="${isAdminSigned or isThisOneSigned}" class="d-none d-lg-table-cell">
                         <span data-toggle="tooltip" data-placement="top" data-html="true"
                               title="Only task owner or admin can delete this task">
                         <a href="" class="btn btn-outline-secondary btn-sm disabled">Delete</a>
