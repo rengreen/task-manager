@@ -1,5 +1,6 @@
 package pl.rengreen.taskmanager.controller;
 
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestWrapper;
 import org.springframework.stereotype.Controller;
@@ -13,14 +14,13 @@ import pl.rengreen.taskmanager.model.User;
 import pl.rengreen.taskmanager.service.TaskService;
 import pl.rengreen.taskmanager.service.UserService;
 
-import javax.validation.Valid;
 import java.security.Principal;
 
 @Controller
 public class TaskController {
 
-    private TaskService taskService;
-    private UserService userService;
+    private final TaskService taskService;
+    private final UserService userService;
 
     @Autowired
     public TaskController(TaskService taskService, UserService userService) {

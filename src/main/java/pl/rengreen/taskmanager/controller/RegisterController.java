@@ -1,5 +1,6 @@
 package pl.rengreen.taskmanager.controller;
 
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,12 +10,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import pl.rengreen.taskmanager.model.User;
 import pl.rengreen.taskmanager.service.UserService;
 
-import javax.validation.Valid;
-
 @Controller
 public class RegisterController {
 
-    private UserService userService;
+    private final UserService userService;
 
     @Autowired
     public RegisterController(UserService userService) {
